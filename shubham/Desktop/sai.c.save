@@ -1,0 +1,39 @@
+#include<pthread.h>
+#include<unistd.h>
+#include<stdio.h>
+int shared=1;
+void *fun1();
+void *fun2();
+pthread_mutex_t l;
+int main()
+{
+pthread_t t1,t2;
+pthread_create(&t1,NULL,&fun1,NULL);
+pthread_create(&t2,NULL,&fun2,NULL);
+pthread_join(t1,NULL);
+
+pthread_join(t2,NULL);
+printf("%d shared value is",shared);
+
+}
+void *fun1()
+{
+int x;
+pthread_mutex_lock(&l);
+x=shared;
+x=x+1;
+sleep(1);
+shared=x;
+pthread_mutex_unlock(&l);
+}pthread_mutex_unlo
+void *fun2()
+{
+int y;
+pthread_mutex_lock(&l);
+y=shared;
+y=y-1;
+sleep(1);
+shared=y;
+pthread_mutex_unlock
+}
+

@@ -1,0 +1,15 @@
+//atleast2 thread call procducer and 2 thread call consumer func
+buffer n
+when producer produces N+1 => 1
+no other producer should produce
+no consumer can consume
+
+consumer will consume N-1
+no other consumer can consume
+no producer can produce
+//progress
+//condtion variable
+pthread_cond_t x,y;
+
+pthread_cond_wait(&x); //consumer
+pthread_cond_signal(&prod); //producer

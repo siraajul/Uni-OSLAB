@@ -1,0 +1,10 @@
+#include<stdio.h>
+#include<pthread.h>
+#include<unistd.h>
+struct s1{
+int a;
+int b;
+};
+void  *h (void *args)
+{
+struct s1 *arg=arg
